@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 export default function Header() {
   return (
-    <Segment>
-      <Header>
-        <h1>Header</h1>
-      </Header>
-    </Segment>
+    <header>
+      <Navbar />
+      <a href="" className="logo">
+        Newbie in Tech
+      </a>
+    </header>
   );
 }
