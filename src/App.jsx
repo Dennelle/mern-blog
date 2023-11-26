@@ -1,6 +1,6 @@
 // ====== hooks ======
 import { Route, Routes, Link } from "react-router-dom";
-import "./App.css";
+import "./styling/App.css";
 
 //====== pages ======
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -19,16 +19,20 @@ import Blogfeed from "./components/Blogfeed/Blogfeed";
 //====== functions ======
 export default function App() {
   return (
-    <main>
-      <div>
-        <Header />
-        <Dashboard />
-      </div>
-      <Blogfeed />
-      <div className="sidebar">
-        <Sidebar />
-        <h1>Sidebar</h1>
-      </div>
-    </main>
+    <Routes>
+      {/* //the index element is for the homepage */}
+      <Route
+        index
+        element={
+          <main>
+            <Header />
+            <Dashboard />
+            <Blogfeed />
+          </main>
+        }
+      />
+      <Route path={"/login"} element={<LoginPage />} />
+      <Route path={"/signup"} element={<SignupPage />} />
+    </Routes>
   );
 }

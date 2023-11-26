@@ -1,16 +1,16 @@
 import React from 'react';
-import './LoginPage.css';
-
+import Header from "../../components/Header/Header";
 
 export default function LoginPage(props) {
   return (
     <div>
-      <h1>Welcome to the Tech Perspective</h1>
-      <form>
-        <input></input>
+      <Header />
+      <h1>Login</h1>
+      <form className="forms">
+        <input type="text" placeholder="enter your username"></input>
+        <input type="text" placeholder="enter your password"></input>
       </form>
       <button>Login</button>
-      <br />
       <button>Sign Up</button>
     </div>
   );
