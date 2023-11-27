@@ -1,4 +1,4 @@
-import tokenService from './tokenService';
+import tokenService from "./tokenService";
 
 const BASE_URL = '/api/users/';
 
@@ -43,7 +43,7 @@ function login(creds) {
 }
 
 export default {
-  signup, 
+  signup,
   getUser,
   logout,
   login

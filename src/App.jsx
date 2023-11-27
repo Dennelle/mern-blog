@@ -1,38 +1,71 @@
 // ====== hooks ======
-import { Route, Routes, Link } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes, Navigate } from "react-router-dom";
 import "./styling/App.css";
 
 //====== pages ======
-import LoginPage from "./pages/LoginPage/LoginPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import ProfilePage from "./pages/ProfilePage";
+import BlogFeedPage from "./pages/BlogFeedPage";
 
 //====== components ======
-import Sidebar from "./components/Sidebar/Sidebar";
-import Header from "./components/Header/Header";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Blogfeed from "./components/Blogfeed/Blogfeed";
-//add blogfeed component
+import Header from "./components/Header";
+import Dashboard from "./components/Dashboard";
+import BlogPost from "./components/BlogPost";
+
+import userService from "./utils/userService";
 
 //add sidebar with technews API
 
 //====== functions ======
 export default function App() {
+  const [user, setUser] = useState(userService.getUser());
+
+  function handleSignUporLogin() {
+    setUser(userService.getUser());
+  }
+
+  function logout() {
+    console.log("user logged out");
+    userService.logout();
+    setUser(null);
+  }
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route
+          path="/login"
+          element={<LoginPage handleSignUporLogin={handleSignUporLogin} />}
+        />
+        <Route
+          path="/signup"
+          element={<SignupPage handleSignUporLogin={handleSignUporLogin} />}
+        />
+        <Route path="/*" element={<Navigate to="/login" />} />
+      </Routes>
+    );
+  }
+
   return (
     <Routes>
-      {/* //the index element is for the homepage */}
       <Route
-        index
-        element={
-          <main>
-            <Header />
-            <Dashboard />
-            <Blogfeed />
-          </main>
-        }
+        path="/"
+        element={<BlogFeedPage loggedUser={user} handleLogout={logout} />}
       />
-      <Route path={"/login"} element={<LoginPage />} />
-      <Route path={"/signup"} element={<SignupPage />} />
+      <Route
+        path="/login"
+        element={<LoginPage handleSignUporLogin={handleSignUporLogin} />}
+      />
+      <Route
+        path="/signup"
+        element={<SignupPage handleSignUporLogin={handleSignUporLogin} />}
+      />
+      <Route
+        path="/:username"
+        element={<ProfilePage loggedUser={user} handleLogout={logout} />}
+      />
     </Routes>
   );
 }

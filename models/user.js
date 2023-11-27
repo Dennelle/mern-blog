@@ -5,10 +5,27 @@ const SALT_ROUNDS = 6;
 
 const userSchema = new mongoose.Schema(
   {
-    username: { type: String, required: true, lowercase: true, unique: true },
-    email: { type: String, required: true, lowercase: true, unique: true },
+    username: { type: String, required: [true,"Username is required"], lowercase: true, unique: true },
+    email: { type: String, required: [true, "Email is required"], lowercase: true, unique: true },
     password: String,
-    photoUrl: String, // string from aws!
+    photoUrl: {type: String, default:"https://media.istockphoto.com/id/165924655/vector/people-icon.jpg?s=612x612&w=0&k=20&c=-FHLv6Q_bWCcXAlNGnuKHnC522Pdc0fkFb8syRvR_p8="}, // string from aws!
+    isAdmin:{
+      type: Boolean,
+      default: false,
+    },
+
+    role:{
+      type: String,
+      enum: ["Admin", "Viewer"]
+    },
+    viewedBy: {
+      type:[
+        {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        }
+      ]
+    },
   },
   {
     timestamps: true,
