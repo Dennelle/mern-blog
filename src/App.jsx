@@ -11,6 +11,7 @@ import BlogFeedPage from "./pages/BlogFeedPage";
 
 //====== components ======
 import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import BlogPost from "./components/BlogPost";
 
@@ -32,8 +33,9 @@ export default function App() {
     setUser(null);
   }
 
-  if (!user) {
-    return (
+  const publicRoutes = (
+    <>
+      <Navbar user={user} />
       <Routes>
         <Route
           path="/login"
@@ -45,27 +47,24 @@ export default function App() {
         />
         <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
-    );
-  }
-
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={<BlogFeedPage loggedUser={user} handleLogout={logout} />}
-      />
-      <Route
-        path="/login"
-        element={<LoginPage handleSignUporLogin={handleSignUporLogin} />}
-      />
-      <Route
-        path="/signup"
-        element={<SignupPage handleSignUporLogin={handleSignUporLogin} />}
-      />
-      <Route
-        path="/:username"
-        element={<ProfilePage loggedUser={user} handleLogout={logout} />}
-      />
-    </Routes>
+    </>
   );
+
+  const protectedRoutes = (
+    <>
+      <Navbar user={user} logout={logout} />
+      <Routes>
+        <Route
+          path="/"
+          element={<BlogFeedPage loggedUser={user} handleLogout={logout} />}
+        />
+        <Route
+          path="/:username"
+          element={<ProfilePage loggedUser={user} handleLogout={logout} />}
+        />
+      </Routes>
+    </>
+  );
+
+  return user ? protectedRoutes : publicRoutes;
 }

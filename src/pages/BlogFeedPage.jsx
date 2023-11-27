@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
 
 import Blogfeed from "../components/BlogPost";
 import tokenService from "../utils/tokenService";
@@ -9,7 +8,6 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
 
   return (
     <div className="post">
-      <Header />
       <img
         src="https://images.openai.com/blob/971cb9d4-66e4-46b0-95d8-f3b57931b08e/stangel-2022-0052.jpg?trim=0,0,0,0&width=3200"
         className="image"

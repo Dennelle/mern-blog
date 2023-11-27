@@ -1,8 +1,7 @@
 import React from "react";
-import Header from "../components/Header";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { userService } from "../utils/userService";
+import userService from "../utils/userService";
 // import { tokenService } from "../utils/tokenService";
 
 export default function LoginPage({ handleSignUporLogin }) {
@@ -36,7 +35,6 @@ export default function LoginPage({ handleSignUporLogin }) {
 
   return (
     <div>
-      <Header />
       <h1>Login</h1>
       <form className="forms" onSubmit={handleSubmit}>
         <input
@@ -55,10 +53,10 @@ export default function LoginPage({ handleSignUporLogin }) {
           onChange={handleChange}
           required
         />
+        <button type="submit" className="button">
+          Login
+        </button>
       </form>
-      <button type="submit" className="button">
-        Login
-      </button>
       <Link to="/signup">Sign Up</Link>
     </div>
   );
