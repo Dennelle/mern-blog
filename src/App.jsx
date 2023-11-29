@@ -13,9 +13,12 @@ import BlogFeedPage from "./pages/BlogFeedPage";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
-import BlogPost from "./components/BlogPost";
+import BlogPost from "./components/BlogFeed";
 
 import userService from "./utils/userService";
+import HomePage from "./pages/HomePage";
+import AdminPage from "./pages/AdminPage";
+import NewBlogPost from "./components/NewBlogPost";
 
 //add sidebar with technews API
 
@@ -38,6 +41,10 @@ export default function App() {
       <Navbar user={user} />
       <Routes>
         <Route
+          path="/"
+          element={<HomePage loggedUser={user} handleLogout={logout} />}
+        />
+        <Route
           path="/login"
           element={<LoginPage handleSignUporLogin={handleSignUporLogin} />}
         />
@@ -45,7 +52,11 @@ export default function App() {
           path="/signup"
           element={<SignupPage handleSignUporLogin={handleSignUporLogin} />}
         />
-        <Route path="/*" element={<Navigate to="/login" />} />
+        <Route
+          path="/blog"
+          element={<BlogFeedPage loggedUser={user} handleLogout={logout} />}
+        />
+        <Route path="/*" element={<Navigate to="/homepage" />} />
       </Routes>
     </>
   );
@@ -56,6 +67,10 @@ export default function App() {
       <Routes>
         <Route
           path="/"
+          element={<HomePage loggedUser={user} handleLogout={logout} />}
+        />
+        <Route
+          path="/blog"
           element={<BlogFeedPage loggedUser={user} handleLogout={logout} />}
         />
         <Route
