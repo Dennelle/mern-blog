@@ -4,39 +4,43 @@ import "../styling/App.css";
 import tokenService from "../utils/tokenService";
 import NewBlogPost from "../components/NewBlogPost";
 import BlogFeed from "../components/BlogFeed";
+import postApi from "../utils/postApi";
 
 export default function BlogFeedPage({ loggedUser, handleLogout }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    setPosts();
+    getPosts();
   }, []);
 
-  // ===this is the create request to the server ======
-  async function addPost(form) {
+  async function getPosts() {
     try {
       const response = await fetch("/api/posts", {
-        method: "POST",
-        body: JSON.stringify(form),
+        method: "GET",
         headers: {
           Authorization: "Bearer " + tokenService.getToken(),
-          "Content-Type": "application/json",
         },
       });
 
       const data = await response.json();
-      // ====================================================
-      // The HTTP cycle has been completed
-      // and we have a parsed response from the server (data)
-      console.log(data, " <- response data from the server");
-
-      // Now we can update the state!
-      setPosts([data.post, ...posts]);
+      console.log("RES FROM SERVER", data);
+      setPosts(data.posts);
     } catch (err) {
       console.log(err);
     }
   }
 
+  // ===this is the create request to the server ======
+  async function addPost(newPostData) {
+    try {
+      const res = await postApi.create(newPostData);
+      console.log(res);
+      setPosts([res.post, ...posts]);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  console.log("POST STATE", posts);
   return (
     <>
       <NewBlogPost addPost={addPost} />

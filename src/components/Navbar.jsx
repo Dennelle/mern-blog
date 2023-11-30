@@ -8,7 +8,7 @@ export default function Navbar({ user, logout }) {
           <Link to="/" className="logo">
             Next in Tech with Dennelle
           </Link>
-          <Link to="/admin" className="logo">
+          <Link to="/blog" className="logo">
             Create New Post
           </Link>
           <br />

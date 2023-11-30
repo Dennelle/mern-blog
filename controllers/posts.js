@@ -31,18 +31,11 @@ async function index(req, res){
 async function create(req, res){
     console.log(req.file, req.body, req.user)
     try {
-        const postDoc = await Post.create({
-            user: req.user,
-            title: req.body.title,
-            content:req.body.content,
-            // category: req.body.category,
-            // sector:req.body.sector
-        })
-    await postDoc.populate('user')
-    res.status(201).json({post: postDoc})
-
+      const postDoc = await Post.create(req.body);
+      // await postDoc.populate('user')
+      res.status(201).json({ post: postDoc });
     } catch (error) {
-        console.log('error creating blog post')
+        console.log("error creating blog post", error);
         res.json({error: 'problem creating post, please try again'})
     }
 }

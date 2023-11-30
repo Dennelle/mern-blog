@@ -1,15 +1,22 @@
+import tokenService from "./tokenService";
 
-const BASE_URL='/api/post'
+const BASE_URL = "/api/posts";
 
-export function create(data){
-    return fetch(BASE_URL, {
-        method: 'POST',
-        body: data,
-        headers:{
-            // Authorization: "Bearer" + tokenService.getToken()
-        }
-    }).then(res =>{
-        if(res.ok) return res.json()
-        throw new Error('something went wrong with the create post')
-    })
+async function create(newPostData) {
+  const response = await fetch("/api/posts", {
+    method: "POST",
+    body: JSON.stringify(newPostData),
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  return data;
 }
+
+export default {
+  create,
+};
