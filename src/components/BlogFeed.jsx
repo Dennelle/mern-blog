@@ -1,4 +1,4 @@
-export default function BlogFeed({ posts }) {
+export default function BlogFeed({ posts, deletePost }) {
   console.log("THIS IS POST FROM BLOGFEED", posts);
 
   return (
@@ -7,6 +7,7 @@ export default function BlogFeed({ posts }) {
         <div key={post._id}>
           <p>{post.title}</p>
           <p>{post.content}</p>
+          <button>X</button>
         </div>
       ))}
     </div>

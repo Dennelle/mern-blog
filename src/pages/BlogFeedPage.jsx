@@ -13,6 +13,7 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
     getPosts();
   }, []);
 
+  // ======this is the read functionality - check blogfeed.jsx =========
   async function getPosts() {
     try {
       const response = await fetch("/api/posts", {
@@ -30,7 +31,7 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
     }
   }
 
-  // ===this is the create request to the server ======
+  // ===this is the create request to the server and corresponds to NewBlogPost ======
   async function addPost(newPostData) {
     try {
       const res = await postApi.create(newPostData);
@@ -47,6 +48,18 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
       <BlogFeed posts={posts} />
     </>
   );
+}
+
+// =========== delete functionality ==================
+async function removePost() {
+  try {
+    const res = await postApi.deletePost();
+    console.log(res);
+    getPosts();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 // import tokenService from "../utils/tokenService";

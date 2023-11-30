@@ -17,6 +17,20 @@ async function create(newPostData) {
   return data;
 }
 
+async function deletePost() {
+  const response = await fetch("/api/posts/:id", {
+    method: "DELETE",
+    body: JSON.stringify(),
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+}
+
 export default {
   create,
+  deletePost,
 };
