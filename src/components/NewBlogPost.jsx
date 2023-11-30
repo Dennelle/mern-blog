@@ -67,22 +67,6 @@ export default function NewBlogPost({ addPost }) {
     console.log("Form submitted:", form);
   };
 
-  // try {
-  // 	await userService.signup(formData); // <-- we must pass all the information from the form into the signup function
-  // 	// in order to send the information to the server
-  // 	// call the handleSignUpOrLogin function from the app component
-  // 	// which passed as a prop, to get the token from localstorage
-  // 	// and set the users information in the apps state
-  // 	handleSignUpOrLogin();
-  // 	// navigate the user to the route we want, (so probably the homepage)
-  // 	navigate('/')
-
-  // } catch(err){
-  // 	console.log(err.message); // <- the error message comes from the throw statement in utils/signup functions
-  // 	setError('Try signing up again')
-  // }
-  // }
-
   return (
     <div>
       <h2>New Blog Post</h2>

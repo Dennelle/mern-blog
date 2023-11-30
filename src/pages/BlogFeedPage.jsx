@@ -42,35 +42,22 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
     }
   }
   console.log("POST STATE", posts);
+
+  // =========== delete functionality ==================
+  async function deletePost(postId) {
+    try {
+      const res = await postApi.deletePost(postId);
+      console.log(res);
+      getPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       <NewBlogPost addPost={addPost} />
-      <BlogFeed posts={posts} />
+      <BlogFeed posts={posts} deletePost={deletePost} />
     </>
   );
 }
-
-// =========== delete functionality ==================
-async function removePost() {
-  try {
-    const res = await postApi.deletePost();
-    console.log(res);
-    getPosts();
-    console.log(data);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-// import tokenService from "../utils/tokenService";
-// import BlogPost from "../components/BlogPost";
-
-// export default function BlogFeedPage({ loggedUser, handleLogout }) {
-//   const [blogposts, setBlogPosts] = useState([]);
-
-//   return (
-//     <div className="post">
-//       <BlogPost />
-//     </div>
-//   );
-// }

@@ -3,7 +3,7 @@ import tokenService from "./tokenService";
 const BASE_URL = "/api/posts";
 
 async function create(newPostData) {
-  const response = await fetch("/api/posts", {
+  const response = await fetch(BASE_URL, {
     method: "POST",
     body: JSON.stringify(newPostData),
     headers: {
@@ -17,10 +17,9 @@ async function create(newPostData) {
   return data;
 }
 
-async function deletePost() {
-  const response = await fetch("/api/posts/:id", {
+async function deletePost(postId) {
+  const response = await fetch(`/api/posts/${postId}`, {
     method: "DELETE",
-    body: JSON.stringify(),
     headers: {
       Authorization: "Bearer " + tokenService.getToken(),
       "Content-Type": "application/json",
@@ -28,6 +27,8 @@ async function deletePost() {
   });
 
   const data = await response.json();
+
+  return data;
 }
 
 export default {

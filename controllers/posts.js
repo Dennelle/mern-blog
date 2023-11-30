@@ -29,7 +29,7 @@ async function deletePost(req, res) {
     await postDoc.save();
     res.json({ data: "post removed" });
   } catch (error) {
-    res.status(400).json({ err });
+    res.status(400).json(error);
   }
 }
 
