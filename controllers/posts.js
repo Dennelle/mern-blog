@@ -24,9 +24,9 @@ async function index(req, res) {
 
 async function deletePost(req, res) {
   try {
-    const postDoc = await Post.findOne({ "posts._id": req.paramas.id });
-    postDoc.posts.remove(req.params.id);
-    await postDoc.save();
+    console.log("THIS IS THE DELETE CONTROLLER");
+    const postDoc = await Post.findOneAndDelete({ _id: req.params.id });
+    console.log("THIS IS POST DOC", postDoc);
     res.json({ data: "post removed" });
   } catch (error) {
     res.status(400).json(error);
