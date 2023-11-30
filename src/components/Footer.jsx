@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styling/App.css";
 
-export default function Header() {
+export default function Footer() {
   return (
     <div>
-      <h1 className="headerStyle">Welcome to the Tech Den</h1>
+      <Link to="/admin" className="logo">
+        Admin
+      </Link>
     </div>
   );
 }

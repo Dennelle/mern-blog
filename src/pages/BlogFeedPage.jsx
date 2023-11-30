@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../styling/App.css";
+import "../styling/App.css";
 
 import tokenService from "../utils/tokenService";
 import NewBlogPost from "../components/NewBlogPost";
@@ -56,7 +57,7 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
 
   return (
     <>
-      <NewBlogPost addPost={addPost} />
+      {/* <NewBlogPost addPost={addPost} /> */}
       <BlogFeed posts={posts} deletePost={deletePost} />
     </>
   );

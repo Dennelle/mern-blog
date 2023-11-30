@@ -1,5 +1,6 @@
 import { useState } from "react";
 import userService from "../utils/userService";
+import "../styling/App.css";
 
 // export default function NewBlogPost({ addPost }) {
 //   const [post, setPost] = useState({
@@ -61,7 +62,7 @@ export default function NewBlogPost({ addPost }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      addPost(form)
+      addPost(form);
     } catch (error) {}
     // Add logic to handle form submission if needed
     console.log("Form submitted:", form);
@@ -82,6 +83,7 @@ export default function NewBlogPost({ addPost }) {
 
         <label htmlFor="content">Content:</label>
         <textarea
+          className="textArea"
           id="content"
           name="content"
           value={form.content}

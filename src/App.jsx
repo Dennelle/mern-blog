@@ -12,6 +12,7 @@ import BlogFeedPage from "./pages/BlogFeedPage";
 //====== components ======
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
 import BlogPost from "./components/BlogFeed";
 
@@ -64,6 +65,7 @@ export default function App() {
   const protectedRoutes = (
     <>
       <Navbar user={user} logout={logout} />
+      <Header />
       <Routes>
         <Route
           path="/"
@@ -77,7 +79,12 @@ export default function App() {
           path="/:username"
           element={<ProfilePage loggedUser={user} handleLogout={logout} />}
         />
+        <Route
+          path="/admin"
+          element={<AdminPage loggedUser={user} handleLogout={logout} />}
+        />
       </Routes>
+      <Footer user={user} />
     </>
   );
 

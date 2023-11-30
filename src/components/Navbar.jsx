@@ -1,25 +1,29 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import "../styling/App.css";
 
 export default function Navbar({ user, logout }) {
   return (
-    <nav>
-      {user ? (
-        <>
-          <Link to="/" className="logo">
-            Next in Tech with Dennelle
-          </Link>
-          <Link to="/blog" className="logo">
-            Create New Post
-          </Link>
-          <br />
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
-        </>
-      )}
-    </nav>
+    <div className="navBar">
+      <nav>
+        {user ? (
+          <>
+            <Link to="/" className="logo">
+              The Tech Den
+            </Link>
+            <br />
+            <Link onClick={logout}>Logout</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+            <Link to="/" className="logo">
+              The Tech Den
+            </Link>
+          </>
+        )}
+      </nav>
+    </div>
   );
 }

@@ -1,10 +1,13 @@
  * {
-   box-sizing: border-box;
+  box-sizing: grid;
  }
 
  body {
-   display: flex;
-   justify-content: center;
+  background-color: white;
+    display: flex;
+    max-width: fit-content;
+      padding-left: 20%;
+      padding-right: 20%;
  }
 
  main {
@@ -15,15 +18,12 @@
 
  header {
    display: flex;
-   justify-content: space-between;
+  justify-content: center;
    margin-bottom: 50 px;
    margin-top: 25px;
  }
 
- header nav {
-   display: flex;
-   gap: 5px;
- }
+
 
  img {
    max-width: 100%;
@@ -61,3 +61,84 @@
  h1 {
    text-align: center;
  }
+
+/* ----- Blog Feed Component ------ */
+.stylePostTitle {
+  text-align: center;
+  font-size: 25px;
+  border-radius: 15px 50px 30px;
+  background: lightblue;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.stylePost {
+  justify-content: left;
+  width: 20;
+}
+
+.stylePostContent {
+  text-align: justify;
+  border-radius: 15px 50px 30px;
+  background: #73AD21;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ------- HomePage Styles ----------- */
+.homepageStyle {
+  text-align: center;
+  border: 2px solid red;
+  background-color: white;
+}
+
+.homepagePara {
+  text-align: justify;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* -------- Nav Bar ------------------ */
+.navBar {
+  display: flex;
+  gap: 5px;
+}
+
+nav {
+  display: flex;
+  gap: 5px;
+}
+
+button {
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 10px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* ------ header component -------- */
+.headerStyle {
+  background-color: lightblue;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: max-width,
+}
+
+/* --------- new blog post component ------------ */
+.textArea {
+  width: 100%;
+  height: 250px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
