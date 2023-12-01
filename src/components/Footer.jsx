@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div>
       <Link to="/admin" className="logo">
-        Admin
+        create blog post
       </Link>
     </div>
   );

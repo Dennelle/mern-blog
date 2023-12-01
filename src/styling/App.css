@@ -1,14 +1,15 @@
  * {
-  box-sizing: grid;
+  box-sizing: border-box;
  }
 
  body {
-  background-color: white;
-    display: flex;
-    max-width: fit-content;
-      padding-left: 20%;
-      padding-right: 20%;
- }
+    margin: 0 0 0 55px;
+      width: auto;
+      font-family: helvetica, arial, sans-serif;
+      line-height: 1.5em;
+      padding-left: 10%;
+      padding-right: 10%
+    }
 
  main {
    padding: 10px;
@@ -21,12 +22,6 @@
   justify-content: center;
    margin-bottom: 50 px;
    margin-top: 25px;
- }
-
-
-
- img {
-   max-width: 100%;
  }
 
  .container {
@@ -46,52 +41,38 @@
    margin-bottom: 5px;
    width: 100%;
    padding: 5px;
-   border: 1px solid red;
+  border: 1px solid black;
    border-radius: 5px;
- }
-
- button {
-   display: block;
-   width: 100px;
-   padding: 5px;
-   margin-bottom: 5px;
-   border-radius: 5px;
- }
-
- h1 {
-   text-align: center;
  }
 
 /* ----- Blog Feed Component ------ */
 .stylePostTitle {
-  text-align: center;
-  font-size: 25px;
-  border-radius: 15px 50px 30px;
-  background: lightblue;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
+  grid-column: 3 / 5;
+    padding-left: 10px;
+    color: #666;
+    border-left: 3px solid black;
 }
 
 .stylePost {
-  justify-content: left;
-  width: 20;
+    border: 2px solid rgb(211, 211, 211);
+      border-top: none;
+      background: white;
 }
-
 .stylePostContent {
-  text-align: justify;
-  border-radius: 15px 50px 30px;
-  background: #73AD21;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
+      display: grid;
+        /* grid-template-columns: 1fr 740px 1fr; */
+        margin: 20px 0;
 }
 
 /* ------- HomePage Styles ----------- */
 .homepageStyle {
   text-align: center;
-  border: 2px solid red;
   background-color: white;
+}
+h1 {
+  text-align: center;
+  font-size: 32px;
+  line-height: 1.25em;
 }
 
 .homepagePara {
@@ -111,7 +92,7 @@ nav {
 }
 
 button {
-  background-color: #04AA6D;
+  background-color: black;
   /* Green */
   border: none;
   color: white;
@@ -126,12 +107,12 @@ button {
 
 /* ------ header component -------- */
 .headerStyle {
-  background-color: lightblue;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  width: max-width,
+  font-family: 'Times New Roman', Times, serif;
+    font-size: 48px;
+    border-bottom: 1px solid black;
+    text-align: left;
 }
 
-/* --------- new blog post component ------------ */
 .textArea {
   width: 100%;
   height: 250px;
@@ -141,4 +122,28 @@ button {
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+}
+
+.blogTitle {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgba(59, 59, 59, 0.957);
 }

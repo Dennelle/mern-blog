@@ -57,7 +57,6 @@ export default function BlogFeedPage({ loggedUser, handleLogout }) {
 
   return (
     <>
-      {/* <NewBlogPost addPost={addPost} /> */}
       <BlogFeed posts={posts} deletePost={deletePost} />
     </>
   );

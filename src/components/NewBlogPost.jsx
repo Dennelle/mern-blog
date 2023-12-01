@@ -72,8 +72,9 @@ export default function NewBlogPost({ addPost }) {
     <div>
       <h2>New Blog Post</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
         <input
+          placeholder="enter title here"
+          className="blogTitle"
           type="text"
           id="title"
           name="title"
@@ -81,8 +82,8 @@ export default function NewBlogPost({ addPost }) {
           onChange={handleInput}
         />
 
-        <label htmlFor="content">Content:</label>
         <textarea
+          placeholder="Enter Content Here"
           className="textArea"
           id="content"
           name="content"

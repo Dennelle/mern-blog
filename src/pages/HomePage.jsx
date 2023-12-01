@@ -4,10 +4,10 @@ import "../styling/App.css";
 export default function HomePage() {
   return (
     <>
-      <h3 className="homepageStyle">
+      <h1 className="homepageStyle">
         Discussing the Tech of Tomorrow: Exploring the Frontiers of Emerging
         Technologies at The Tech Den
-      </h3>
+      </h1>
       <br />
       <p className="homepagePara">
         In the fast-paced landscape of the digital era, technology's relentless

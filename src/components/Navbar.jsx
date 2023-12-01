@@ -9,7 +9,10 @@ export default function Navbar({ user, logout }) {
         {user ? (
           <>
             <Link to="/" className="logo">
-              The Tech Den
+              | The Tech Den |
+            </Link>
+            <Link to="/admin" className="logo">
+              | Create Post |
             </Link>
             <br />
             <Link onClick={logout}>Logout</Link>

@@ -53,11 +53,8 @@ export default function LoginPage({ handleSignUporLogin }) {
           onChange={handleChange}
           required
         />
-        <button type="submit" className="button">
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
-      <Link to="/signup">Sign Up</Link>
     </div>
   );
 }

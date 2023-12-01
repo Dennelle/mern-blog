@@ -15,7 +15,9 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const posts = await Post.find({}).populate("user").exec();
+    const posts = await Post.find({})
+      .populate("user")
+      .sort({ createdAt: "desc" });
     res.status(200).json({ posts });
   } catch (err) {
     res.json({ error: err });
@@ -44,7 +46,3 @@ async function create(req, res) {
     res.json({ error: "problem creating post, please try again" });
   }
 }
-
-// function update(){
-
-// }

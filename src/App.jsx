@@ -84,7 +84,6 @@ export default function App() {
           element={<AdminPage loggedUser={user} handleLogout={logout} />}
         />
       </Routes>
-      <Footer user={user} />
     </>
   );
 
