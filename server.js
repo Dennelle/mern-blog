@@ -9,17 +9,17 @@ require("./config/database");
 // Require controllers here
 
 const app = express();
+app.set("view engine", "ejs");
 
-const usersRouter = require('./routes/api/users')
-const postsRouter = require('./routes/api/posts')
-const likesRouter = require('./routes/api/likes')
-const commentsRouter = require('./routes/api/comments')
+const usersRouter = require("./routes/api/users");
+const postsRouter = require("./routes/api/posts");
+const likesRouter = require("./routes/api/likes");
+const commentsRouter = require("./routes/api/comments");
 
 // add in when the app is ready to be deployed
 // app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(logger("dev"));
 app.use(express.json());
-
 
 // Configure the auth middleware
 // This decodes the jwt token, and assigns
@@ -27,14 +27,26 @@ app.use(express.json());
 app.use(require("./config/auth"));
 // api routes must be before the "catch all" route
 // app.use("/api/users", require("./routes/api/users")); <----removed this for line 13
-app.use('/', usersRouter);
-app.use('/', postsRouter);
-app.use('/',likesRouter);
-app.use('/', commentsRouter);
+app.use("/", usersRouter);
+app.use("/", postsRouter);
+app.use("/", likesRouter);
+app.use("/", commentsRouter);
 
 // "catch all" route
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+
+if (process.env.IS_PRODUCTION) {
+  const manifest = require("./dist/manifest.json");
+
+  app.use(express.static(path.join(__dirname, "dist")));
+
+  // "catch all" route
+  app.get("/*", function (req, res) {
+    res.render(path.join(__dirname, "dist", "index.ejs"), { manifest });
+  });
+}
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./", "index.html"));
 });
 
 const port = process.env.PORT || 3001;
